@@ -104,7 +104,6 @@ spi_setup(uint32_t bus, uint8_t mode, uint32_t rate)
     CONFIG_MACH_STM32L4
         spi->CR2 = SPI_CR2_FRXTH | (7 << SPI_CR2_DS_Pos);
 #endif
-    }
 
     // Calculate CR1 register
     uint32_t pclk = get_pclock_frequency((uint32_t)spi);
