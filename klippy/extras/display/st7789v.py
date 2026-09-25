@@ -137,7 +137,7 @@ class DisplayBase:
                 continue
 
             # Convert to an RGB NumPy array for speed.
-            arr = numpy.fromstring(strip_diff.tobytes(), dtype=numpy.uint8)
+            arr = numpy.frombuffer(strip_diff.tobytes(), dtype=numpy.uint8)
             arr = arr.reshape((strip_diff.size[1], strip_diff.size[0], 3))
 
             # Find indices of columns that have changed within this strip.
@@ -164,7 +164,7 @@ class DisplayBase:
                     start_x + last_col + 1, row + strip_height))
 
                 # Convert the image to an array of bytes.
-                data = numpy.fromstring(strip.tobytes(), dtype=numpy.uint8)
+                data = numpy.frombuffer(strip.tobytes(), dtype=numpy.uint8)
                 # Convert from RGB888 (24-bit) to RGB565 (16-bit).
                 data565 = numpy.zeros((int(data.shape[0] / 3),), dtype=numpy.uint16)
                 data565[:] += \
